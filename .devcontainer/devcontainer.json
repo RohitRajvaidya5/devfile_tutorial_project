@@ -1,6 +1,6 @@
 {
   "image": "python:3.11",
-  "postCreateCommand": "pip install -r requirements.txt",
-  "postStartCommand": "python manage.py runserver 0.0.0.0:8000",
+  "postCreateCommand": "python -m venv env && . env/bin/activate && pip install -r requirements.txt",
+  "postStartCommand": ". env/bin/activate && python manage.py runserver 0.0.0.0:8000",
   "forwardPorts": [8000]
 }
