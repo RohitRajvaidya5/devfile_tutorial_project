@@ -1,0 +1,23 @@
+schemaVersion: 2.2.0
+metadata:
+  name: test-django-dev-environment
+
+components:
+  - name: python
+    container:
+      image: python:3.11.0
+      memoryLimit: 1Gi
+      mountSources: true
+
+commands:
+  - id: install-deps
+    exec:
+      component: python
+      commandLine: pip install -r requirements.txt
+      workingDir: ${PROJECT_SOURCE}
+
+  - id: run-server
+    exec:
+      component: python
+      commandLine: python manage.py runserver 0.0.0.0:8000
+      workingDir: ${PROJECT_SOURCE}
